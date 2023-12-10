@@ -1,4 +1,4 @@
-const videoElement = document.getElementById('video');
+const videoElement = window.document.getElementById('video');
 const button = document.getElementById('button');
 
 // prompt to select media stream, pass to video element, then play
@@ -24,6 +24,16 @@ async function selectMediaStream(){
         console.log('there is the ERROR', error);
     }
 }
+
+button.addEventListener('click', async () => {
+    // disable button
+    button.disabled = true;
+    // 
+    await videoElement.requestPictureInPicture();
+    // reset button
+    button.disabled = false;
+
+});
 
 // on load
 
